@@ -5,7 +5,7 @@ function onMouseInput(e) {
 }
 
 function onTouchInput(e) {
-  const touch = e.touches[0]
+  const touch = e.touches[0];
   handleInput(touch.clientX, touch.clientY);
 }
 

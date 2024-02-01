@@ -1,4 +1,4 @@
-const renderDelay = 100;
+const RENDER_DELAY = 100;
 
 const gameUpdates = [];
 let gameStart = 0,
@@ -23,14 +23,12 @@ export function processGameUpdate(update) {
 }
 
 function currentServerTime() {
-  return firstServerTimestamp + (Date.now() - gameStart) - renderDelay;
+  return firstServerTimestamp + (Date.now() - gameStart) - RENDER_DELAY;
 }
 
 export function getBaseUpdate() {
   const serverTime = currentServerTime();
-  for (let i = gameUpdates.length - 1; i >= 0; i--) {
-    if (gameUpdates[i].t <= serverTime) return i;
-  }
+  for (let i = gameUpdates.length - 1; i >= 0; i--) if (gameUpdates[i].t <= serverTime) return i;
   return -1;
 }
 
